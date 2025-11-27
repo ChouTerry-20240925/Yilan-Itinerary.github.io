@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宜蘭礁溪．濱海風情．溫泉美食二日遊</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00897b; /* Teal */
+            --secondary-color: #e0f2f1; /* Light Teal */
+            --accent-color: #ff6f00; /* Amber */
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+        }
+
+        body {
+            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #004d40);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Day Separator */
+        .day-header {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 15px 25px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-left: 6px solid var(--primary-color);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .date-tag {
+            font-size: 0.8em;
+            background: white;
+            padding: 2px 10px;
+            border-radius: 15px;
+            color: #666;
+        }
+
+        /* Timeline Items */
+        .timeline {
+            padding: 20px 25px;
+            position: relative;
+        }
+
+        .item {
+            display: flex;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        /* Vertical Line */
+        .item::before {
+            content: '';
+            position: absolute;
+            left: 28px; /* Center of the circle */
+            top: 35px;
+            bottom: -30px;
+            width: 2px;
+            background: #ddd;
+            z-index: 0;
+        }
+
+        .item:last-child::before {
+            display: none;
+        }
+
+        .time {
+            min-width: 60px;
+            font-weight: bold;
+            color: var(--primary-color);
+            padding-top: 5px;
+            text-align: right;
+            margin-right: 15px;
+            font-size: 0.95em;
+        }
+
+        .icon-box {
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            z-index: 1;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .content {
+            background: var(--light-gray);
+            padding: 15px;
+            border-radius: 8px;
+            flex-grow: 1;
+            border-left: 3px solid transparent;
+            transition: transform 0.2s;
+        }
+
+        .content:hover {
+            transform: translateX(5px);
+            border-left: 3px solid var(--accent-color);
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .content h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+
+        .content p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .content .note {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Links */
+        a.map-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        a.map-link:hover {
+            text-decoration: underline;
+            color: var(--accent-color);
+        }
+
+        /* Summary Box */
+        .summary-box {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .meal-tag, .hotel-tag {
+            font-size: 0.85em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #e8eaf6;
+            color: #3f51b5;
+        }
+        
+        .hotel-tag {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .time {
+                font-size: 0.85em;
+                min-width: 45px;
+            }
+            .content {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>宜蘭礁溪．濱海風情．溫泉美食二日遊</h1>
+        <p>精選在地美食｜觀光工廠巡禮｜無敵海景公路</p>
+    </header>
+
+    <!-- Day 1 -->
+    <div class="day-header">
+        第一天：宜蘭經典巡禮 & 礁溪溫泉舒壓
+        <span class="date-tag">Day 01</span>
+    </div>
+
+    <div class="timeline">
+        <!-- 06:30 -->
+        <div class="item">
+            <div class="time">06:30</div>
+            <div class="icon-box"><i class="fas fa-bus"></i></div>
+            <div class="content">
+                <h3>集合出發</h3>
+                <p>帶著愉快的心情，從台北出發前往宜蘭。</p>
+            </div>
+        </div>
+
+        <!-- 08:00 -->
+        <div class="item">
+            <div class="time">08:00</div>
+            <div class="icon-box"><i class="fas fa-utensils"></i></div>
+            <div class="content">
+                <h3>宜蘭頂埔阿嬤蔥油餅</h3>
+                <p>品嚐在地超人氣銅板美食，外皮酥脆、蔥香四溢。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=宜蘭頂埔阿嬤蔥油餅" target="_blank" class="map-link"><i class="fas fa-map-marker-alt"></i> 查看地圖</a>
+            </div>
+        </div>
+
+        <!-- 08:30 -->
+        <div class="item">
+            <div class="time">08:30</div>
+            <div class="icon-box"><i class="fas fa-car"></i></div>
+            <div class="content">
+                <h3>前往觀光工廠聚落</h3>
+                <p>啟程前往龍潭湖周邊特色觀光園區。</p>
+            </div>
+        </div>
+
+        <!-- 09:00 -->
+        <div class="item">
+            <div class="time">09:00</div>
+            <div class="icon-box"><i class="fas fa-camera"></i></div>
+            <div class="content">
+                <h3>觀光工廠巡禮（自由參觀）</h3>
+                <p>多元特色園區一次滿足：</p>
+                <ul>
+                    <li><strong>橘之鄉蜜餞形象館：</strong>體驗金棗蜜餞文化與手作樂趣。</li>
+                    <li><strong>亞典菓子工場：</strong>品嚐年輪蛋糕，免費咖啡試飲。</li>
+                    <li><strong>宜蘭窯烤山寨村：</strong>特色赤魁巨人造景與烘焙美食。</li>
+                    <li><strong>三合餅鋪龍潭工廠：</strong>傳統古早味蔥燒餅。</li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=橘之鄉蜜餞形象館" target="_blank" class="map-link"><i class="fas fa-map-marker-alt"></i> 橘之鄉</a> &nbsp;|&nbsp;
+                <a href="https://www.google.com/maps/search/?api=1&query=亞典菓子工場" target="_blank" class="map-link">亞典菓子</a> &nbsp;|&nbsp;
+                <a href="https://www.google.com/maps/search/?api=1&query=宜蘭窯烤山寨村" target="_blank" class="map-link">山寨村</a>
+            </div>
+        </div>
+
+        <!-- 10:45 -->
+        <div class="item">
+            <div class="time">10:45</div>
+            <div class="icon-box"><i class="fas fa-bus"></i></div>
+            <div class="content">
+                <h3>前往午宴餐廳</h3>
+                <p>準備前往享用豐盛午餐。</p>
+            </div>
+        </div>
+
+        <!-- 11:00 -->
+        <div class="item">
+            <div class="time">11:00</div>
+            <div class="icon-box"><i class="fas fa-utensils"></i></div>
+            <div class="content">
+                <h3>龍佳園景觀餐廳</h3>
+                <p>享用中式合菜料理。餐廳腹地廣大，停車便利，適合團體聚餐。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=龍佳園景觀餐廳" target="_blank" class="map-link"><i class="fas fa-map-marker-alt"></i> 查看地圖</a>
+            </div>
+        </div>
+
+        <!-- 13:00 -->
+        <div class="item">
+            <div class="time">13:00</div>
+            <div class="icon-box"><i class="fas fa-bus"></i></div>
+            <div class="content">
+                <h3>前往潭酵天地</h3>
+                <p>餐後散步行程。</p>
+            </div>
+        </div>
+
+        <!-- 13:15 -->
+        <div class="item">
+            <div class="time">13:15</div>
+            <div class="icon-box"><i class="fas fa-leaf"></i></div>
+            <div class="content">
+                <h3>潭酵天地觀光工廠 & 龍潭湖風景區</h3>
+                <p><strong>潭酵天地：</strong>以醋為主題的觀光工廠，擁有雙層透明溜滑梯與優美植栽佈景。<br><strong>龍潭湖（可選）：</strong>若時間充裕，可至鄰近的「蘭陽十二勝」之一龍潭湖散步環湖。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=潭酵天地觀光工廠" target="_blank" class="map-link"><i class="fas fa-map-marker-alt"></i> 潭酵天地地圖</a>
+            </div>
+        </div>
+
+        <!-- 15:00 -->
+        <div class="item">
+            <div class="time">15:00</div>
+            <div class="icon-box"><i class="fas fa-bus"></i></div>
+            <div class="content">
+                <h3>前往礁溪飯店</h3>
+                <p>驅車前往今晚下榻的溫泉飯店。</p>
+            </div>
+        </div>
+
+        <!-- 15:30 -->
+        <div class="item">
+            <div class="time">15:30</div>
+            <div class="icon-box"><i class="fas fa-hotel"></i></div>
+            <div class="content">
+                <h3>辦理入住：葛瑪蘭之星飯店</h3>
+                <p>Check-in 後可稍作休息，享受飯店設施或在房間內享受著名的礁溪美人湯。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=礁溪葛瑪蘭之星飯店" target="_blank" class="map-link"><i class="fas fa-map-marker-alt"></i> 查看地圖</a>
+            </div>
+        </div>
+
+        <!-- 17:00 -->
+        <div class="item">
+            <div class="time">17:00</div>
+            <div class="icon-box"><i class="fas fa-utensils"></i></div>
+            <div class="content">
+                <h3>飯店自助百匯晚餐</h3>
+                <p>於飯店內享用豐盛自助餐，結束美好的一天。</p>
+            </div>
+        </div>
+        
+        <div class="content" style="background: #e3f2fd; margin-left: 75px;">
+            <div class="summary-box" style="border-top: none; margin-top: 0; padding-top: 0;">
+                <span class="meal-tag"><i class="fas fa-coffee"></i> 早：頂埔阿嬤蔥油餅</span>
+                <span class="meal-tag"><i class="fas fa-utensils"></i> 午：龍佳園景觀餐廳</span>
+                <span class="meal-tag"><i class="fas fa-glass-cheers"></i> 晚：飯店自助餐</span>
+                <span class="hotel-tag"><i class="fas fa-bed"></i> 宿：葛瑪蘭之星飯店</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-header">
+        第二天：濱海公路絕美海景 & 基隆海港饗宴
+        <span class="date-tag">Day 02</span>
+    </div>
+
+    <div class="timeline">
+        <!-- Morning -->
+        <div class="item">
+            <div class="time">07:00<br>|<br>11:00</div>
+            <div class="icon-box"><i class="fas fa-coffee"></i></div>
+            <div class="content">
+                <h3>飯店早餐 / 自由活動 / 採買伴手禮</h3>
+                <p>享用飯店早餐後，可使用設施或至礁溪市區購買宜蘭名產（如奶凍捲、鴨賞）。<br>請於 11:00 前完成退房手續。</p>
+            </div>
+        </div>
+
+        <!-- 12:00 -->
+        <div class="item">
+            <div class="time">12:00</div>
+            <div class="icon-box"><i class="fas fa-car"></i></div>
+            <div class="content">
+                <h3>濱海公路風光之旅</h3>
+                <p>行駛台2線濱海公路前往基隆。沿途欣賞太平洋無敵海景，視車況與天氣，可沿路停靠風景點拍照留念。</p>
+                <div class="note">建議停靠點：外澳沙灘、三貂角燈塔或南雅奇岩（視實際時間彈性調整）。</div>
+            </div>
+        </div>
+
+        <!-- 15:00 -->
+        <div class="item">
+            <div class="time">15:00</div>
+            <div class="icon-box"><i class="fas fa-utensils"></i></div>
+            <div class="content">
+                <h3>午晚宴：基隆蒙古火鍋王</h3>
+                <p>抵達基隆，享用獨特風味的蒙古火鍋。位於高樓層，可一邊用餐一邊眺望基隆港灣美景。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=基隆蒙古火鍋王" target="_blank" class="map-link"><i class="fas fa-map-marker-alt"></i> 查看地圖</a>
+            </div>
+        </div>
+
+        <!-- 18:00 -->
+        <div class="item">
+            <div class="time">18:00</div>
+            <div class="icon-box"><i class="fas fa-home"></i></div>
+            <div class="content">
+                <h3>快樂賦歸</h3>
+                <p>帶著滿滿的回憶與伴手禮，從基隆出發返回溫暖的家。</p>
+            </div>
+        </div>
+
+        <div class="content" style="background: #e3f2fd; margin-left: 75px;">
+            <div class="summary-box" style="border-top: none; margin-top: 0; padding-top: 0;">
+                <span class="meal-tag"><i class="fas fa-coffee"></i> 早：飯店早餐</span>
+                <span class="meal-tag"><i class="fas fa-utensils"></i> 午/晚：基隆蒙古火鍋王</span>
+                <span class="hotel-tag"><i class="fas fa-home"></i> 宿：溫暖的家</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>祝您旅途愉快！ Have a Nice Trip</p>
+    </footer>
+</div>
+
+</body>
+</html>
